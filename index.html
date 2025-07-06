@@ -14,23 +14,42 @@
             flex-direction: column;
         }
         img {
+            cursor: pointer;
+        }
+        #heart {
+            width: 10%;
+            height: auto;
+        }
+        #man {
             width: 25%;
             height: auto;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <img src="DT-man.gif" alt="Man">
-    <audio id="gasterAudio" autoplay>
+    <img id="heart" src="heart_shaped_object.png" alt="Heart">
+    <img id="man" src="DT-man.gif" alt="Man">
+
+    <audio id="gasterAudio">
         <source src="Man_music.ogg" type="audio/ogg">
         Your browser does not support the audio element.
     </audio>
 
     <script>
-        // Redirect back to the previous page after 11 seconds
-        setTimeout(function() {
-            history.back();
-        }, 11000); // 11 seconds
+        document.getElementById('heart').addEventListener('click', function () {
+            // Hide the heart and show the man image
+            this.style.display = 'none';
+            document.getElementById('man').style.display = 'block';
+
+            // Play the audio
+            document.getElementById('gasterAudio').play();
+
+            // Start countdown to go back
+            setTimeout(function () {
+                history.back();
+            }, 11000); // 11 seconds
+        });
     </script>
 </body>
 </html>
