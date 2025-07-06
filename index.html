@@ -38,26 +38,29 @@
 
     <script>
         document.getElementById('man1').addEventListener('click', function () {
-            // Hide man1 and show man2
             this.style.display = 'none';
             const man2 = document.getElementById('man2');
             man2.style.display = 'block';
 
-            // Play the audio
             const audio = document.getElementById('garbageAudio');
             audio.play();
 
             let size = 5;
-            const growInterval = setInterval(function () {
-                size += 1;
-                man2.style.width = size + '%';
-            }, 1000); // Every second
+            const growthSteps = [1, 1.5, 3, 6, 12, 24]; // Growth percentages per second
+            let index = 0;
 
-            setTimeout(function () {
-                clearInterval(growInterval);
-                location.reload();
-            }, 6000); // After 6 seconds
+            const growInterval = setInterval(function () {
+                if (index < growthSteps.length) {
+                    size += growthSteps[index];
+                    man2.style.width = size + '%';
+                    index++;
+                } else {
+                    clearInterval(growInterval);
+                    location.reload();
+                }
+            }, 1000); // Every second
         });
     </script>
 </body>
 </html>
+
