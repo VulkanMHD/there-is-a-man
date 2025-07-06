@@ -17,11 +17,11 @@
             cursor: pointer;
         }
         #man1 {
-            width: 10%;
+            width: 5%;
             height: auto;
         }
         #man2 {
-            width: 10%;
+            width: 5%;
             height: auto;
             display: none;
         }
@@ -45,8 +45,8 @@
             const audio = document.getElementById('garbageAudio');
             audio.play();
 
-            let size = 10;
-            const growthSteps = [1, 1.5, 3, 6, 12, 24]; // Growth percentages per second
+            let size = 5;
+            const growthSteps = [1, 1.5, 3, 6, 12, 24]; // Growth increments
             let index = 0;
 
             const growInterval = setInterval(function () {
@@ -56,9 +56,9 @@
                     index++;
                 } else {
                     clearInterval(growInterval);
-                    location.reload();
+                    // Do nothing here. The extension will handle the redirection.
                 }
-            }, 1000); // Every second
+            }, 1000);
         });
     </script>
 </body>
