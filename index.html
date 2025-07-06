@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gaster Event</title>
+    <title>Gaster Event Sequence</title>
     <style>
         body {
             background-color: black;
@@ -16,41 +16,47 @@
         img {
             cursor: pointer;
         }
-        #heart {
+        #man1 {
             width: 5%;
             height: auto;
         }
-        #man {
-            width: 25%;
+        #man2 {
+            width: 5%;
             height: auto;
             display: none;
         }
     </style>
 </head>
 <body>
-    <img id="heart" src="heart_shaped_object.png" alt="Heart">
-    <img id="man" src="DT-man.gif" alt="Man">
+    <img id="man1" src="man1.png" alt="Man1">
+    <img id="man2" src="man2.png" alt="Man2">
 
-    <audio id="gasterAudio">
-        <source src="Man_music.ogg" type="audio/ogg">
+    <audio id="garbageAudio">
+        <source src="garbage_noise.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
     <script>
-        document.getElementById('heart').addEventListener('click', function () {
-            // Hide the heart and show the man image
+        document.getElementById('man1').addEventListener('click', function () {
+            // Hide man1 and show man2
             this.style.display = 'none';
-            document.getElementById('man').style.display = 'block';
+            const man2 = document.getElementById('man2');
+            man2.style.display = 'block';
 
-            // Play the audio at 50% volume
-            const audio = document.getElementById('gasterAudio');
-            audio.volume = 0.5;
+            // Play the audio
+            const audio = document.getElementById('garbageAudio');
             audio.play();
 
-            // Start countdown to go back
+            let size = 5;
+            const growInterval = setInterval(function () {
+                size += 1;
+                man2.style.width = size + '%';
+            }, 1000); // Every second
+
             setTimeout(function () {
-                history.back();
-            }, 11000); // 11 seconds
+                clearInterval(growInterval);
+                location.reload();
+            }, 6000); // After 6 seconds
         });
     </script>
 </body>
