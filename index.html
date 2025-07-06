@@ -17,11 +17,11 @@
             cursor: pointer;
         }
         #man1 {
-            width: 5%;
+            width: 10%;
             height: auto;
         }
         #man2 {
-            width: 5%;
+            width: 10%;
             height: auto;
             display: none;
         }
@@ -45,8 +45,8 @@
             const audio = document.getElementById('garbageAudio');
             audio.play();
 
-            let size = 5;
-            const growthSteps = [1, 1.5, 3, 6, 12, 24]; // Growth increments
+            let size = 10;
+            const growthSteps = [1, 1.5, 3, 6, 12, 24];
             let index = 0;
 
             const growInterval = setInterval(function () {
@@ -56,11 +56,10 @@
                     index++;
                 } else {
                     clearInterval(growInterval);
-                    // Do nothing here. The extension will handle the redirection.
+                    history.back(); // Return to the previous page
                 }
             }, 1000);
         });
     </script>
 </body>
 </html>
-
