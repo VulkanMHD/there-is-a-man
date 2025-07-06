@@ -17,7 +17,7 @@
             cursor: pointer;
         }
         #heart {
-            width: 10%;
+            width: 5%;
             height: auto;
         }
         #man {
@@ -42,8 +42,10 @@
             this.style.display = 'none';
             document.getElementById('man').style.display = 'block';
 
-            // Play the audio
-            document.getElementById('gasterAudio').play();
+            // Play the audio at 50% volume
+            const audio = document.getElementById('gasterAudio');
+            audio.volume = 0.5;
+            audio.play();
 
             // Start countdown to go back
             setTimeout(function () {
